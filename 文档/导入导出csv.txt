@@ -1,0 +1,5 @@
+mongoexport.exe -d dbname -c colloctionname --csv -f field -o 1.csv
+
+
+
+mongoimport.exe -d dbname -c colloctionname --type csv --file 1.csv --headerline

@@ -1,0 +1,1 @@
+select e.player_id,p.name,p.level,e.equip_id,e.level,e.status,e.ninja_id,e.type,e.star,e.del_flag,e.color,e.update_time,e.record_time from player_equip as e  left join player as p  on e.player_id = p.id LIMIT 0,1000000
