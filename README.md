@@ -1,4 +1,4 @@
 NinjaEquip
 ==========
 
-mongodb存储玩家装备
+mongodb存储玩家装备。
