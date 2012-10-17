@@ -105,13 +105,20 @@ class SiteController extends Controller
     	$session = new CHttpSession;
 	    $session->open();
 	    $player_name = isset($_REQUEST['player_name'])?$_REQUEST['player_name']:"";
-	   // $player_name= "音無斎の里";
-		$da = Equips::model()->findAllByAttributes(array('name'=>$player_name));
-		if($da){
-		var_dump($da);
-		}else{echo "没有这个用户的装备信息";}
-		die();
-	
-	//   echo $player_name;
+	    $type = isset($_REQUEST['type'])?$_REQUEST['type']:0;
+	    $criteria = new EMongoCriteria;
+	    if($type==1){
+	    	$criteria->name('==',new MongoRegex("/.*".$player_name.".*/"))->limit(10);
+	    }else{
+	    	$criteria->name('==',$player_name);
+	    }
+
+ 		$da = Equips::model()->findAll($criteria);
+		if(json_encode($da)!='[]'){
+			echo json_encode($da);
+		}else{
+			echo null;
+		}
+		exit();
     }
 }
