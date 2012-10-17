@@ -2,4 +2,23 @@ mongoexport.exe -d dbname -c colloctionname --csv -f field -o 1.csv
 
 
 
-mongoimport.exe -d dbname -c colloctionname --type csv --file 1.csv --headerline
+./mongoimport -d equips -c equip --type csv --file /mnt/1.csv --headerline
+
+
+
+
+db.equip.remove({"property":{$exists:false}});
+
+var dList = db.equip.find();
+while(dList.hasNext()){
+	var equip = dList.next();
+	var mList = equip.property;
+	var ll = mList.length;
+	delete equip.eid;
+	for(i=0;i<ll;i++){
+		var temp = mList[i];
+		delete temp._id;
+		delete temp.player_equip_id;
+	}
+	db.equip.update({"_id":equip._id},equip);
+}

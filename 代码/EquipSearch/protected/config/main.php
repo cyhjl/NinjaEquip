@@ -53,8 +53,9 @@ return array(
 		*/
 		'mongodb' => array(
 	        'class'             => 'EMongoDB',
-	        'connectionString'  => 'mongodb://127.0.0.1',
-	        'dbName'            => 'cc',
+	       // 'connectionString'  => 'mongodb://127.0.0.1',
+	       	'connectionString'  => 'mongodb://192.168.1.11',
+	        'dbName'            => 'equips',
 	        'fsyncFlag'         => false,
 	        'safeFlag'          => false,
 	        'useCursor'         => false,

@@ -41,7 +41,7 @@ class Equips extends EMongoDocument
 	 */
 	public function getCollectionName()
 	{
-		return 'cc';
+		return 'equip';
 	}
 
 	/**
