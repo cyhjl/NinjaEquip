@@ -1,28 +1,25 @@
 <?php
-
+require_once(dirname(__FILE__).'/mars/const.cfg.php');
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
-
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'EquipSearch',
-    'language'=>'zh_cn',
+    'language'=>'ja',
 	// preloading 'log' component
 	'preload'=>array('log'),
-
-	// autoloading model and component classes
+ 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.extensions.*',
 		'ext.YiiMongoDbSuite.*',
 	),
-
-	'modules'=>array(
+ 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		
-		'gii'=>array(
+ 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'123456',
 		 	// If removed, Gii defaults to localhost only. Edit carefully to taste.
@@ -51,7 +48,10 @@ return array(
 			),
 		),
 		*/
-		'mongodb' => array(
+		'messages'=>array(
+            'class'=>'CPhpMessageSource',
+      	),
+ 		'mongodb' => array(
 	        'class'             => 'EMongoDB',
 	       // 'connectionString'  => 'mongodb://127.0.0.1',
 	       	'connectionString'  => 'mongodb://192.168.1.11',
@@ -61,8 +61,7 @@ return array(
 	        'useCursor'         => false,
 		),
 		// uncomment the following to use a MySQL database
-
-		'errorHandler'=>array(
+ 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
         ),
