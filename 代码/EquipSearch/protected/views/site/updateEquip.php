@@ -5,23 +5,22 @@ function search_friends(){
  	$.layer({
 	    type : 3,
 	    success :function(){
-			var player_name = $("#player_name").val();
-			var data = 'r=site/searchFromEquipList&player_name='+player_name+'&type='+type;
+ 			var data = 'r=site/update';
 			$.ajax({ 
 				type: "GET", 
 				url: 'index.php', 
 				dataType: 'json', 
 				data: data, 
 				success: function(content){
-					CONTENT = content;	
+ 					CONTENT = content;	
 					if(content){
-						str = '<span style="color:red">共查询到'+content.length+'个装备</span>';
+						str = '<span style="color:red">共更新'+content.length+'数据</span>';
 						str+= '<tr style="color:#519CC6"><td>玩家名字</td><td>玩家id</td><td>装备id</td><td>装备等级</td><td>持有忍着id</td><td>color</td><td>是否删除</td><td>update_time</td><td>record_time</td></tr>';			
 						for(var key in content){
 		 					str+="<tr><td>"+content[key].name+"</td><td>"+content[key].player_id+"</td><td onclick='look_property("+key+")'><a href='javascript:void(0)'>"+content[key].equip_id+"</a></td><td>"+content[key].level+"</td><td>"+content[key].ninja_id+"</td><td>"+content[key].color+"</td><td>"+content[key].del_flag+"</td><td>"+content[key].update_time+"</td><td>"+content[key].record_time+"</td></tr>";
 						}
 					}else{
-						str = '<span style="color:red">没有该玩家的装备数据</span>';
+						str = '<span style="color:red">没有数据更新</span>';
 					}
 					$("#listAll").html(str);
 					LAYER.loadClose();
@@ -49,7 +48,7 @@ function look_property(key){
 		dataType: 'json', 
 		data: data, 
 		success: function(content){
- 			 // alert(content);
+ 			 
  			var msg = '';
  			msg +='<table width="311" height="187" border="1" >';
  			msg +='<tr><td width="151"><img src="'+content.img+'" width="130" height="140"><br/>描述：'+content.desc+'</td><td>名字：'+content.name+'<br/>属性：'+getPropertyStr(key)+'</td></tr>';
@@ -120,14 +119,11 @@ function getPropertyStr(skey){
 <div class="bg_wrap_03 clearfix pb10">
 
 	<div class="clearfix p10">
-		<input id="player_name" type="text" class="w180 h30 lh30 border-black-2 fl" value="<?=isset($player_name)?$player_name:""?>" placeholder="输入玩家名  e.g:hihu" />
-		<button  style="width:80px;height:24px;background:#81B8D6" onclick="search_friends()">搜 索</button>
- 	</div>
-	<input type="checkbox"  onclick ="changeType(this)" />
-	模糊查询,包含输入字符的所有村子
+ 		<button  style="width:100px;height:30px;background:#81B8D6" onclick="search_friends()">更 新</button>
+	</div>
+	 
 	<br /><br /><br />
 </div>
- 
 
 <table id='listAll' width="100%" border="0" cellspacing="0" cellpadding="0" id="t3" ></table>
 	

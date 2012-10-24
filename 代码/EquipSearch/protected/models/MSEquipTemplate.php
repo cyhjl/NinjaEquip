@@ -66,7 +66,7 @@ class MSEquipTemplate{
 			}
 			$level = $this->level;
 			$e_level =  floor(($level-1) / 10)*10 +1;
-			return	"/images/ninja_equip/".$e_level.'/'.$cstr.$e_Info['img'];
+			return	"http://192.168.1.136/images/ninja_equip/".$e_level.'/'.$cstr.$e_Info['img'];
 		}
 		return "";
 	}

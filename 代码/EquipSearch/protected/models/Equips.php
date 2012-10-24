@@ -6,6 +6,7 @@
 class Equips extends EMongoDocument
 {
 	public $_id;
+	public $eid;
 	public $player_id;
 	public $name;
 	public $level;
@@ -53,11 +54,11 @@ class Equips extends EMongoDocument
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('_id, player_id, level, equip_id, status, ninja_id, property, type, star, del_flag, color, update_time, record_time', 'numerical', 'integerOnly'=>true),
+			array('_id, eid,player_id, level, equip_id, status, ninja_id, type, star, del_flag, color, update_time, record_time', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('_id, player_id, name, level, equip_id, status, ninja_id, property, type, star, del_flag, color, update_time, record_time', 'safe', 'on'=>'search'),
+			array('_id, eid,player_id, name, level, equip_id, status, ninja_id, property, type, star, del_flag, color, update_time, record_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,6 +69,7 @@ class Equips extends EMongoDocument
 	{
 		return array(
 			'_id' => 'ID',
+			'eid' => 'Eid',
 			'player_id' => 'Player',
 			'name' => 'Name',
 			'level' => 'Level',

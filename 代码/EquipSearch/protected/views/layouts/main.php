@@ -21,10 +21,18 @@
 <body>
 
 <div class="container" id="page">
-
-	<div id="mainmenu">
+<div id="mainmenu">
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
+
+	<div id="mainmenu">
+		<?php $this->widget('zii.widgets.CMenu',array(
+			'items'=>array(
+				array('label'=>'装备搜索', 'url'=>array('/site/index')),
+				array('label'=>'更新mongo', 'url'=>array('/site/updateEquip')),
+			 ),
+		)); ?>
+	</div><!-- mainmenu -->
 
  	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(

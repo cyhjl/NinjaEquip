@@ -60,6 +60,14 @@ return array(
 	        'safeFlag'          => false,
 	        'useCursor'         => false,
 		),
+		
+		'db'=>array(
+			'connectionString' => 'mysql:host=192.168.1.20 ;dbname=ninja',
+			'emulatePrepare' => true,
+			'username' => 'ninja-m',
+			'password' => 'ninjaFtFt05ab',
+			'charset' => 'utf8',
+		),
 		// uncomment the following to use a MySQL database
  		'errorHandler'=>array(
 			// use 'site/error' action to display errors

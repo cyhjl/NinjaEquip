@@ -22,3 +22,14 @@ while(dList.hasNext()){
 	}
 	db.equip.update({"_id":equip._id},equip);
 }
+
+
+> var ps=db.equip.find();
+> while(ps.hasNext()){ 
+	obj=ps.next(); 
+	var ps2 = db.magic.find({"player_equip_id":obj.eid});
+	while(ps2.hasNext()){
+		obj2=ps2.next();
+		db.equip.update({"eid":obj.eid},{$push:{"property":obj2}}); 
+	}
+  }
